@@ -123,20 +123,20 @@ Suunniteltujen tai toteutettujen rakentamis- tai purkamistoimenpiteiden kohde. R
 
 **Ominaisuudet**
 
-| Nimi                             | Name       | Tyyppi                                                                | Kardinaliteetti | Kuvaus                                                                                                                                                                                                                             |
-|---------------|---------------|---------------|---------------|---------------|
-| RakennuskohteenTiedonLaji        |            | [RakennuskohteenTiedonLaji](#RakennuskohteenTiedonLaji)               | 1               |                                                                                                                                                                                                                                    |
-| RakennuskohteenSijaintitiedot    |            | [Sijainti](#sijainti)                                                 | 0..\*           | paikka, jossa jokin sijaitsee                                                                                                                                                                                                      |
-| kokonaisala                      | total area | [Integer](#integer)                                                   | 1               | Rakennuksen pinta-ala, johon lasketaan ulkomitoin kaikkien kerrosten, kellareiden ja lämpöeristettyjen ullakkohuoneiden pinta-alat. Pinta-alaan ei lasketa parvekkeita, katoksia eikä tiloja, joissa vapaa korkeus on alle 160 cm. |
-| RakennuskohteenTiedonLähteenLaji |            | [RakennusKohteenTiedonLähteenLaji](#rakennuskohteentiedonlähteenlaji) | 1               |                                                                                                                                                                                                                                    |
+| Nimi              | Name       | Tyyppi                                                                | Kardinaliteetti | Kuvaus                                                                                                                                                                                                                             |
+|-------------|-------------|---------------|-------------|--------------------|
+| tiedonLaji        |            | [RakennuskohteenTiedonLaji](#RakennuskohteenTiedonLaji)               | 1               |                                                                                                                                                                                                                                    |
+| sijainti          |            | [RakennuskohteenSijaintitiedot]                                       | 1               | paikka, jossa jokin sijaitsee                                                                                                                                                                                                      |
+| kokonaisala       | total area | [Integer](#integer)                                                   | 0..1            | Rakennuksen pinta-ala, johon lasketaan ulkomitoin kaikkien kerrosten, kellareiden ja lämpöeristettyjen ullakkohuoneiden pinta-alat. Pinta-alaan ei lasketa parvekkeita, katoksia eikä tiloja, joissa vapaa korkeus on alle 160 cm. |
+| tiedonLähteenLaji |            | [RakennusKohteenTiedonLähteenLaji](#rakennuskohteentiedonlähteenlaji) | 1               |                                                                                                                                                                                                                                    |
 
 **Assosiaatiot**
 
-| Roolinimi          | Role name                  | Kohde                                           | Kardinaliteetti | Kuvaus                                                                                                                                |
-|---------------|---------------|---------------|---------------|---------------|
-| Rakennustietomalli | building information model | [RakennuksenTietomalli](#rakennuksentietomalli) | 1               | tietomalli, joka mahdollistaa rakennustietojen vaihdon, jakamisen ja käytön                                                           |
-| paikka             | building site              | [Rakennuspaikka](#rakennuspaikka)               | 1               | Kiinteistö tai muu määritelty alue, joka rakentamisluvan yhteydessä osoitetaan rakennuksen tai muun rakennuskohteen sijaintipaikaksi. |
-| Sijaintikiinteistö |                            | [Kiinteisto](#kiinteisto)                       | 1               | kiinteistörekisteriin merkitty maan tai vesialueen omistuksen yksikkö                                                                 |
+| Roolinimi          | Role name                  | Kohde                                                                                                        | Kardinaliteetti | Kuvaus                                                                                                                                |
+|-------------|-------------|---------------|-------------|--------------------|
+| tietomalli         | building information model | [RakennuksenTietomalli](#rakennuksentietomalli)                                                              | 0..\*           | tietomalli, joka mahdollistaa rakennustietojen vaihdon, jakamisen ja käytön                                                           |
+| paikka             | building site              | [Rakennuspaikka](#rakennuspaikka)                                                                            | 1               | Kiinteistö tai muu määritelty alue, joka rakentamisluvan yhteydessä osoitetaan rakennuksen tai muun rakennuskohteen sijaintipaikaksi. |
+| Sijaintikiinteistö |                            | [Kiinteistö](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#kiinteist%C3%B6) | 0..1            | kiinteistörekisteriin merkitty maan tai vesialueen omistuksen yksikkö                                                                 |
 
 ### RakennusTaiSenOsa
 
@@ -145,14 +145,15 @@ Englanninkielinen nimi: **käännös tähän**
 Kuvaa käsitteen [RakennusTaiSenOSa](../../kasitemalli/#rakennustaisenosa), erikoistaa luokkaa [Rakennuskohde](#rakennuskohde), Stereotyyppi: FeatureType (kohdetyyppi)
 
 | Nimi                                | Name                            | Tyyppi                                                                      | Kardinaliteetti | Kuvaus                                                                                 |
-|---------------|---------------|---------------|---------------|---------------|
+|-------------|-------------|----------------|-------------|-------------------|
 | elinkaarenvaihe                     | life-cycle stage                | [RakennuksenElinkaarenVaihe](#rakennuksenelinkaarenvaihe)                   | 1               |                                                                                        |
 | valmistumispäivämäärä               | completion date                 | date                                                                        | 0..1            |                                                                                        |
 | suojelutapa                         |                                 | [Suojelutapa](#suojelutapa)                                                 | 0..1            |                                                                                        |
-| kulttuurihistoriallinenMerkittävyys | culture-historical significance | [KulttuurihistoriallinenMerkittävyys](#kulttuurihistoriallinenmerkittävyys) | 1               | Tieto kohteen kulttuurihistoriallisesta merkittävyydestä.                              |
+| kulttuurihistoriallinenMerkittävyys | culture-historical significance | [KulttuurihistoriallinenMerkittävyys](#kulttuurihistoriallinenmerkittävyys) | 0..1            | Tieto kohteen kulttuurihistoriallisesta merkittävyydestä.                              |
 | materiaalitiedot                    |                                 | [Materiaalitiedot](#materiaalitiedot)                                       | 0..1            |                                                                                        |
-| Energiatiedot                       |                                 | [Energiatiedot](#energiatiedot)                                             | 0..1            |                                                                                        |
+| energiatiedot                       |                                 | [Energiatiedot](#energiatiedot)                                             | 0..1            |                                                                                        |
 | sisätilojenTiedot                   |                                 | [SisätilojenTiedot](#sisatilojentiedot)                                     | 0..1            |                                                                                        |
+| ulkokuorenTiedot                    |                                 | [Ulkokuorentiedot]                                                          | 0..1            |                                                                                        |
 | talotekniikkatiedot                 |                                 | [Talotekniikkatiedot](#talotekniikkatiedot)                                 | 0..1            |                                                                                        |
 | käyttötiedot                        |                                 | [Rakennuksenkäyttötiedot](#rakennuksenkäyttötiedot)                         | 0..1            |                                                                                        |
 | varuste                             | equipment                       | [RakennuksenVaruste](#rakennuksenvaruste)                                   | 0..\*           | Rakennukseen, rakennelmaan tai huoneistoon kiinteästi asennettu järjestelmä tai laite. |
@@ -168,8 +169,8 @@ Omalla sisäänkäynnillä varustettu rakennuskohde, joka on erillinen, kiinteä
 **Ominaisuudet**
 
 | Nimi                 | Name                          | Tyyppi                                                                                                          | Kardinaliteetti | Kuvaus                                                      |
-|---------------|---------------|---------------|---------------|---------------|
-| pysyväRAkennusTunnus | permanent building identifier | [CharacterString](#characterstring)                                                                             | 0..1            | Väestötietojärjestelmään tallennettu pysyvä rakennustunnus. |
+|------------|------------|--------------------------|------------|------------|
+| pysyväRakennusTunnus | permanent building identifier | [CharacterString](#characterstring)                                                                             | 0..1            | Väestötietojärjestelmään tallennettu pysyvä rakennustunnus. |
 | väliaikainenTunnus   | temporary identifier          | [CharacterString](#characterstring)                                                                             | 0..1            |                                                             |
 | tilapäinen           |                               | boolean                                                                                                         | 1               |                                                             |
 | purkamisenMääräaika  |                               | date                                                                                                            | 0..1            |                                                             |
@@ -179,7 +180,7 @@ Omalla sisäänkäynnillä varustettu rakennuskohde, joka on erillinen, kiinteä
 **Assosiaatiot**
 
 | Roolinimi     | Rolename | Kohde            | Kardinaliteetti | Kuvaus                                                                           |
-|---------------|---------------|---------------|---------------|---------------|
+|----------|----------|----------|----------|--------------------------------|
 | hissi         | Lift     | [Hissi]          | 0..\*           |                                                                                  |
 | sisäänkäynti  | entrance | [Sisäänkäynti]   | 0..\*           | Portaali kahden tilan välillä; sisätilasta sisätilaan tai ulkotilasta sisätilaan |
 | sisältyväTila |          | [RakennettuTila] | 0..\*           |                                                                                  |
@@ -195,13 +196,13 @@ Erillinen, kiinteä tai paikallaan pidettäväksi tarkoitettu, omalla sisäänk�
 **Ominaisuudet**
 
 | Nimi                  | Name                        | Tyyppi                              | Kardinaliteetti | Kuvaus                                                                                                                                                                                                  |
-|---------------|---------------|---------------|---------------|---------------|
-| RakennuksenOsanTunnus | building section identifier | [CharacterString](#characterstring) | 1               | Rakennuksen osalle määritetty rakennuksen osan tunnus. Kullakin rakennuksen osalla on erillinen rakennuksen osatunnus. Pysyvä rakennustunnus on jokaisella samaan rakennukseen liittyvällä osalla sama. |
+|---------|---------|---------|---------|------------------------------------|
+| rakennuksenOsanTunnus | building section identifier | [CharacterString](#characterstring) | 0..1            | Rakennuksen osalle määritetty rakennuksen osan tunnus. Kullakin rakennuksen osalla on erillinen rakennuksen osatunnus. Pysyvä rakennustunnus on jokaisella samaan rakennukseen liittyvällä osalla sama. |
 
 **Assosiaatiot**
 
 | Roolinimi | Rolename | Kohde                                       | Kardinaliteetti | Kuvaus |
-|---------------|---------------|---------------|---------------|---------------|
+|-----------|-----------|----------------------------|-----------|-----------|
 | rakennus  | building | [Rakennus](#rakennus)                       | 1               |        |
 | osa       |          | [RakennuksenOsittelu](#rakennuksenosittelu) | 1               |        |
 
@@ -209,39 +210,37 @@ Erillinen, kiinteä tai paikallaan pidettäväksi tarkoitettu, omalla sisäänk�
 
 Englanninkielinen nimi: **Area to be built for specific activities**
 
-Kuvaa käsitteen [ErityistäToimintaaVartenRAkennettavaAlue](../../kasitemalli/#erityistatoimintaavartenrakennettavaalue), erikoistaa luokkaa [Rakennuskohde](#rakennuskohde), Stereotyyppi: FeatureType (kohdetyyppi)
+Kuvaa käsitteen [ErityistäToimintaaVartenRakennettavaAlue](../../kasitemalli/#erityistatoimintaavartenrakennettavaalue), erikoistaa luokkaa [Rakennuskohde](#rakennuskohde), Stereotyyppi: FeatureType (kohdetyyppi)
 
 Erityistä toimintaa varten rakennettava alue, esim. pysäköintialue
 
 **Ominaisuudet**
 
 | Nimi                  | Name                                             | Tyyppi                                                                                                  | Kardinaliteetti | Kuvaus                                                 |
-|---------------|---------------|---------------|---------------|---------------|
-| laji                  | type of area to be built for specific activities | [ErityistäToimintaaVartenRAkennettavanAlueenTyyppi](#erityistatoimintaavartenrakennettavanalueentyyppi) | 1               | Erityistä toimintaa varten rakennettavan alueen tyyppi |
+|------------|------------|------------------------|------------|------------|
+| laji                  | type of area to be built for specific activities | [ErityistäToimintaaVartenRakennettavanAlueenTyyppi](#erityistatoimintaavartenrakennettavanalueentyyppi) | 1               | Erityistä toimintaa varten rakennettavan alueen tyyppi |
 | verkostoliittymä      | network connection                               | [Verkostoliittymä](#verkostoliittymä)                                                                   | 0..\*           |                                                        |
 | varuste               | Equipment                                        | [rakennuksenVaruste](#rakennuksenvaruste)                                                               | 0..\*           |                                                        |
-| valmistumispäivämäärä | completion date                                  | date                                                                                                    | 1               |                                                        |
+| valmistumispäivämäärä | completion date                                  | date                                                                                                    | 0..1            |                                                        |
 | tilapäinen            | temporary                                        | boolean                                                                                                 | 1               |                                                        |
 | purkamisenMääräaika   |                                                  | date                                                                                                    | 0..1            |                                                        |
 
 ### RakennelmaTaiSenOsa
-
-Englanninkielinen nimi: **käännös tähän**
 
 Kuvaa käsitteen [RakennelmaTaiSenOSa](../../kasitemalli/#rakennelmataisenosa), erikoistaa luokkaa [Rakennuskohde](#rakennuskohde), Stereotyyppi: FeatureType (kohdetyyppi)
 
 **Ominaisuudet**
 
 | Nimi                                | Name                            | Tyyppi                                                                      | Kardinaliteetti | Kuvaus                                                                                 |
-|---------------|---------------|---------------|---------------|---------------|
+|-------------|-------------|----------------|-------------|-------------------|
 | elinkaarenVaihe                     | life-cycle stage                | [RakennuksenElinkaarenVaihe](#rakennuksenelinkaarenvaihe)                   | 1               |                                                                                        |
-| valmistumispäivämäärä               | completion date                 | date                                                                        | 1               |                                                                                        |
+| valmistumispäivämäärä               | completion date                 | date                                                                        | 0..1            |                                                                                        |
 | suojelutapa                         |                                 | [Suojelutapa](#suojelutapa)                                                 | 0..1            |                                                                                        |
-| KulttuurihistoriallinenMerkittävyys | culture-historical significance | [KulttuurihistoriallinenMerkittävyys](#kulttuurihistoriallinenmerkittavyys) | 1               | Tieto kohteen kulttuurihistoriallisesta merkittävyydestä.                              |
+| KulttuurihistoriallinenMerkittävyys | culture-historical significance | [KulttuurihistoriallinenMerkittävyys](#kulttuurihistoriallinenmerkittavyys) | 0..1            | Tieto kohteen kulttuurihistoriallisesta merkittävyydestä.                              |
 | materiaalitiedot                    |                                 | [Materiaalitiedot](#materiaalitiedot)                                       | 0..1            |                                                                                        |
 | energiatiedot                       |                                 | [Energiatiedot](#energiatiedot)                                             | 0..1            |                                                                                        |
 | ulkokuorenTiedot                    |                                 | [UlkokuorenTiedot](#ulkokuorentiedot)                                       | 0..1            |                                                                                        |
-| Talotekniikkatiedot                 |                                 | [Talotekniikkatiedot](#talotekniikkatiedot)                                 | 0..1            |                                                                                        |
+| talotekniikkatiedot                 |                                 | [Talotekniikkatiedot](#talotekniikkatiedot)                                 | 0..1            |                                                                                        |
 | käyttötarkoitus                     | purpose of structure            | [Rakennelmankäyttötarkoitus](#rakennelmankayttotarkoitus)                   | 0..1            | Rakennelman käyttötarkoitus.                                                           |
 | varuste                             | Equipment                       | [RakennuksenVaruste](#rakennuksenvaruste)                                   | 0..\*           | Rakennukseen, rakennelmaan tai huoneistoon kiinteästi asennettu järjestelmä tai laite. |
 
@@ -256,8 +255,8 @@ Rakennuskohde, jota alueen rakennusvalvontaviranomainen ei sen käyttötarkoituk
 **Ominaisuudet**
 
 | Nimi                 | Name                          | Tyyppi                              | Kardinaliteetti | Kuvaus                                                      |
-|---------------|---------------|---------------|---------------|---------------|
-| Pysyvärakennustunnus | permanent building identifier | [CharacterString](#characterstring) | 0..1            | Väestötietojärjestelmään tallennettu pysyvä rakennustunnus. |
+|-------------|-------------|-------------|-------------|---------------------|
+| pysyväRakennusTunnus | permanent building identifier | [CharacterString](#characterstring) | 0..1            | Väestötietojärjestelmään tallennettu pysyvä rakennustunnus. |
 | väliaikainenTunnus   | temporary identifier          | [CharacterString](#characterstring) | 0..1            |                                                             |
 | tilapäinen           |                               | boolean                             | 1               |                                                             |
 | purkamisenMääräaika  |                               | date                                | 0..1            |                                                             |
@@ -265,7 +264,7 @@ Rakennuskohde, jota alueen rakennusvalvontaviranomainen ei sen käyttötarkoituk
 **Assosiaatiot**
 
 | Roolinimi | Rolename | Kohde                             | Kardinaliteetti | Kuvaus                                                                                                                                               |
-|---------------|---------------|---------------|---------------|---------------|
+|---------|---------|---------|---------|-------------------------------------|
 | osa       |          | [RakennelmanOsa](#rakennelmanosa) | 0..\*           | Osa rakennuskohteesta, jota alueen rakennusvalvontaviranomainen ei sen käyttötarkoituksen, koon, muodon tai väliaikaisuuden vuoksi pidä rakennuksena |
 
 ### RakennelmanOsa {#rakennelmanosa}
@@ -278,22 +277,22 @@ Osa rakennuskohteesta, jota alueen rakennusvalvontaviranomainen ei sen käyttöt
 
 **Assosiaatiot**
 
-| Roolinimi | Rolename | Kohde                     | Kardinaliteetti | Kuvaus                                                                                                                                               |
-|---------------|---------------|---------------|---------------|---------------|
-| osa       | section  | [Rakennelma](#rakennelma) | 0..\*           | Osa rakennuskohteesta, jota alueen rakennusvalvontaviranomainen ei sen käyttötarkoituksen, koon, muodon tai väliaikaisuuden vuoksi pidä rakennuksena |
+| Roolinimi  | Rolename  | Kohde                     | Kardinaliteetti | Kuvaus                                                                                                                                               |
+|---------|---------|---------|---------|--------------------------------------|
+| rakennelma | structure | [Rakennelma](#rakennelma) | 1               | Osa rakennuskohteesta, jota alueen rakennusvalvontaviranomainen ei sen käyttötarkoituksen, koon, muodon tai väliaikaisuuden vuoksi pidä rakennuksena |
 
 ### Rakennustietomalli
 
 Englanninkielinen nimi: **Building Information Model, BIM**
 
-Kuvaa käsitteen [Rakennustietomalli](../../kasitemalli/#rakennustietomalli), Stereotyyppi: FeatureType (kohdetyyppi)
+Kuvaa käsitteen [Rakennustietomalli](../../kasitemalli/#rakennustietomalli), erikoistaa luokkaa [VersioituObjekti](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#versioituobjekti), Stereotyyppi: FeatureType (kohdetyyppi)
 
 Kuvaus Rakenteinen, koneluettava kuvaus rakennuksen koostumisesta ja ominaisuuksista.
 
 **Ominaisuudet**
 
 | Nimi                            | Name                               | Tyyppi                                                                                                          | Kardinaliteetti | kuvaus |
-|---------------|---------------|---------------|---------------|---------------|
+|-----------|-----------|------------------------------|-----------|-----------|
 | laji                            | type of building information model | [RakennustietomallinLaji](#rakennustietomallinlajit)                                                            | 1               |        |
 | tiedosto                        |                                    | [Liiteasiakirja](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#liiteasiakirja) | 1               |        |
 | jalanjälkiprojektionNurkkapiste |                                    | [point](#point)                                                                                                 | 0..1            |        |
@@ -301,48 +300,48 @@ Kuvaus Rakenteinen, koneluettava kuvaus rakennuksen koostumisesta ja ominaisuuks
 **Assosiaatiot**
 
 | Roolinimi | Rolename        | Kohde                           | Kardinaliteetti | Kuvaus                                                                                                                                                                                                        |
-|---------------|---------------|---------------|---------------|---------------|
+|--------|--------|--------|--------|----------------------------------------|
 | kohde     | Building object | [RakennusKohde](#rakennuskohde) | 1               | Suunniteltujen tai toteutettujen rakentamis- tai purkamistoimenpiteiden kohde. Rakennuskohde voi olla rakennus, rakennelma, huoneisto tai erityistä toimintaa varten rakennettava alue (esim. pysäköintialue) |
 
 ### Rakennussuunnitelma
 
 Englanninkielinen nimi: **Construction plan**
 
-Kuvaa käsitteen [Rakennussuunnitelma](../../kasitemalli/#rakennussuunnitelma), Stereotyyppi: FeatureType (kohdetyyppi)
+Kuvaa käsitteen [Rakennussuunnitelma](../../kasitemalli/#rakennussuunnitelma), erikoistaa luokkaa [VersioituObjekti](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#versioituobjekti), Stereotyyppi: FeatureType (kohdetyyppi)
 
 Rakentamista koskeva suunnitelma, joka on perustana rakennettavan kohteen erityissuunnittelulle ja muulle suunnittelulle.
 
 **Ominaisuudet**
 
 | Nimi     | Name | Tyyppi                                                                                                          | Kardinaliteetti | Kuvaus |
-|------------|------------|--------------------------|------------|------------|
+|-------------|-------------|---------------------|------------|--------------|
 | tiedosto |      | [Liiteasiakirja](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#liiteasiakirja) | 1               |        |
 
 **Assosiaatiot**
 
 | Roolinimi        | Rolename        | Kohde                           | Kardinaliteetti | Kuvaus |
-|---------------|---------------|---------------|---------------|---------------|
-| suunniteltukohde | building object | [Rakennuskohde](#rakennuskohde) | 0..\*           |        |
+|-------------|-------------|--------------------|-------------|-------------|
+| suunniteltukohde | building object | [Rakennuskohde](#rakennuskohde) | 1               |        |
 
 ### Erityissuunnitelma
 
 Englanninkielinen nimi: **Special plan**
 
-Kuvaa käsitteen [Erityissuunnitelma](../../kasitemalli/#erityissuunnitelma), Stereotyyppi: FeatureType (kohdetyyppi)
+Kuvaa käsitteen [Erityissuunnitelma](../../kasitemalli/#erityissuunnitelma), erikoistaa luokkaa [VersioituObjekti](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#versioituobjekti), Stereotyyppi: FeatureType (kohdetyyppi)
 
 Rakentamista koskeva suunnitelma, joka laaditaan rakennussuunnitelman lisäksi silloin, kun rakennettavan kohteen ominaisuudet ja laajuus sitä edellyttävät.
 
 **Ominaisuudet**
 
 | Nimi     | Name        | Tyyppi                                                                                                          | Kardinaliteetti | Kuvaus |
-|---------------|---------------|---------------|---------------|---------------|
+|---------|---------|---------------------------------------|---------|---------|
 | kuvaus   | description | [LanguageString](#languagestring)                                                                               | 0..\*           |        |
 | tiedosto |             | [Liiteasiakirja](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#liiteasiakirja) | 1               |        |
 
 **Assosiaatiot**
 
 | Roolinimi        | Rolename        | Kohde                           | Kardinaliteetti | Kuvaus                                                                                                                                                                                                        |
-|---------------|---------------|---------------|---------------|---------------|
+|---------|---------|---------|---------|---------------------------------------|
 | suunniteltukohde | building object | [Rakennuskohde](#rakennuskohde) | 0..\*           | Suunniteltujen tai toteutettujen rakentamis- tai purkamistoimenpiteiden kohde. Rakennuskohde voi olla rakennus, rakennelma, huoneisto tai erityistä toimintaa varten rakennettava alue (esim. pysäköintialue) |
 
 ### Rakennuspaikka {#rakennuspaikka}
@@ -357,43 +356,42 @@ Kiinteistö tai muu määritelty alue, joka rakentamisluvan yhteydessä osoiteta
 
 | Nimi                   | Name                          | Tyyppi                    | Kardinaliteetti | Kuvaus                   |
 |---------------|---------------|---------------|---------------|---------------|
-| pintaAla               | area                          | [decimal](#decimal)       | 0..1            | Rakennuspaikan pinta-ala |
-| hulevedenkäsittelytapa | type of storm water treatment | [HulevedenKäsittelynLaji] | 0..1            |                          |
+| pintaAla               | area                          | [Measure]                 | 0..1            | Rakennuspaikan pinta-ala |
+| hulevedenKäsittelytapa | type of storm water treatment | [HulevedenKäsittelynLaji] | 0..1            |                          |
 
 **Assosiaatiot**
 
 | Roolinimi                | Rolename            | Kohde                                                                                                       | Kardinaliteetti | Kuvaus                                                                                                                                                                                                                                                                           |
-|---------------|---------------|---------------|---------------|---------------|
+|----------|----------|----------|----------|----------------------------------|
 | rakentamistaOhjaavaKaava | Plan                | [Kaava](https://tietomallit.ymparisto.fi/kaavatiedot/v1.1/looginenmalli/dokumentaatio/#kaava)               | 0..\*           |                                                                                                                                                                                                                                                                                  |
 | kaavayksikkö             | Plan unit           | [Kaavayksikkö](https://tietomallit.ymparisto.fi/kaavatiedot/v1.1/looginenmalli/dokumentaatio/#kaavayksikko) | 0..\*           | Asema- tai ranta-asemakaavan pienin yksikkö. Käytännössä kaavayksiköt ovat kortteleita tai sen osia, tai vastaavasti yleisiä alueita tai sen osia. Kaavayksikkö voi olla esimerkiksi sitovan tonttijaon mukainen kaavatontti tai ohjeellisen tonttijaon mukainen rakennuspaikka. |
 | rakennuspaikanOsoite     |                     | [Osoite](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#osoite)             | 0..\*           | sijaintipaikan osoittavien tietojen kokonaisuus                                                                                                                                                                                                                                  |
 | toimenpide               | construction action | [RakennuskohteenToimenpide](#rakennuskohteentoimenpide)                                                     | 0..\*           | maankäyttöprosessi jossa määriteltyjen vaiheiden mukaisesti tuotetaan rakennuskohde                                                                                                                                                                                              |
-| kohde                    | building object     | [rakennuskohde](#rakennuskohde)                                                                             | 0..\*           |                                                                                                                                                                                                                                                                                  |
 
 ### RakennuskohteenOmistaja
 
 Englanninkielinen nimi: **Building owner**
 
-Kuvaa käsitteen [RakennuskohteenOmistaja](../../kasitemalli/#rakennuskohteenomistaja), Stereotyyppi: FeatureType (kohdetyyppi)
+Kuvaa käsitteen [RakennuskohteenOmistaja](../../kasitemalli/#rakennuskohteenomistaja), erikoistaa luokkaa [VersioituObjekti](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#versioituobjekti), Stereotyyppi: FeatureType (kohdetyyppi)
 
 Rakennuskohteen omistajatieto.
 
 **Ominaisuudet**
 
 | Nimi                | Name                      | Tyyppi                                                          | Kardinaliteetti | Kuvaus                         |
-|---------------|---------------|---------------|---------------|---------------|
+|-------------|-------------|-----------------------|-------------|-------------|
 | tunnuksetonOmistaja | owner without identifiers | [TunnuksettomanOmistajanTiedot](#tunnuksettomanomistajantiedot) | 0..1            |                                |
-| omistajalaji        | owner type                | [omistajalaji](#omistajalaji)                                   |                 | rakennuskohteen omistajalaji   |
-| omistuksenlaji      | ownership type            | [omistuksenlaji](#omistuksenlaji)                               |                 | rakennuskohteen omistuksenlaji |
-| passiivinen         |                           | boolean                                                         |                 |                                |
+| omistajalaji        | owner type                | [omistajalaji](#omistajalaji)                                   | 1               | rakennuskohteen omistajalaji   |
+| omistuksenlaji      | ownership type            | [omistuksenlaji](#omistuksenlaji)                               | 1               | rakennuskohteen omistuksenlaji |
+| passiivinen         |                           | boolean                                                         | 1               |                                |
 | passivoinninSyy     |                           | [LanguageString](#languagestring)                               | 0..\*           |                                |
 
 **Assosiaatiot**
 
-| Roolinimi              | Rolename        | Kohde                                                                                              | Kardinaliteetti | Kuvaus           |
-|---------------|---------------|---------------|---------------|---------------|
-| tunnuksellinenOmistaja |                 | [toimija](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#toimija)  | 0..1            | Liittyvä toimija |
-| omistettuKohde         | building object | [RakennusKohde](#rakennuskohde)                                                                    | 0..\*           |                  |
+| Roolinimi              | Rolename        | Kohde                                                                                             | Kardinaliteetti | Kuvaus           |
+|----------|----------|-------------------------------|----------|----------|
+| tunnuksellinenOmistaja |                 | [toimija](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#toimija) | 0..1            | Liittyvä toimija |
+| omistettuKohde         | building object | [RakennusKohde](#rakennuskohde)                                                                   | 0..\*           |                  |
 
 ### Hissi
 
@@ -404,7 +402,7 @@ Kuvaa käsitteen [Hissi](../../kasitemalli/#hissi), erikoistaa luokkaa Rakennetu
 **Ominaisuudet**
 
 | Nimi            | Name                | Tyyppi                                                                                        | Kardinaliteetti | Kuvaus                                                               |
-|---------------|---------------|---------------|---------------|---------------|
+|-----------|-----------|-----------------------|-----------|----------------|
 | laji            | type of lift        | [HissinLaji](#hissinlaji)                                                                     | 1               | Hissin laji                                                          |
 | elinkaarenVaihe | life-cycle stage    | [RakennuksenToiminnallisenOsanElinkaarenVaihe](#rakennuksentoiminnallisenosanelinkaarenvaihe) | 1               |                                                                      |
 | sisäpituus      | inside length       | [Measure](#measure)                                                                           | 0..1            | Hissikorin sisäpituus millimetreinä                                  |
@@ -424,30 +422,30 @@ Portaali kahden tilan välillä; sisätilasta sisätilaan tai ulkotilasta sisät
 
 **Ominaisuudet**
 
-|                 |                     |                                                                                               |                 |                                                                                                             |
-|---------------|---------------|---------------|---------------|---------------|
-| Nimi            | Name                | Tyyppi                                                                                        | Kardinaliteetti | kuvaus                                                                                                      |
-| laji            | type of entrance    | [SisäänkäynninTyyppi]                                                                         | 1               | Sisäänkäynnin käyttötarkoitusta tai -tapaa kuvaava tieto.                                                   |
-| elinkaarenVaihe | life-cycle stage    | [RakennuksenToiminnallisenOsanElinkaarenVaihe](#rakennuksentoiminnallisenosanelinkaarenvaihe) | 1               |                                                                                                             |
-| osoitetunnus    | address of entrance | [CharacterString](#characterstring)                                                           | 0..1            | Merkkiyhdistelmä, joka yksilöi sisäänkäynnin ja on kirjattu rakennusta koskeviin virallisiin asiakirjoihin. |
-| esteetön        | accessible          | boolean                                                                                       | 0..1            |                                                                                                             |
+|                 |                     |                                                                                               |                     |                                                                                                             |
+|-----------|-----------|-------------------|-----------|----------------------|
+| **Nimi**        | **Name**            | **Tyyppi**                                                                                    | **Kardinaliteetti** | **kuvaus**                                                                                                  |
+| laji            | type of entrance    | [SisäänkäynninTyyppi]                                                                         | 1                   | Sisäänkäynnin käyttötarkoitusta tai -tapaa kuvaava tieto.                                                   |
+| elinkaarenVaihe | life-cycle stage    | [RakennuksenToiminnallisenOsanElinkaarenVaihe](#rakennuksentoiminnallisenosanelinkaarenvaihe) | 1                   |                                                                                                             |
+| osoitetunnus    | address of entrance | [CharacterString](#characterstring)                                                           | 0..1                | Merkkiyhdistelmä, joka yksilöi sisäänkäynnin ja on kirjattu rakennusta koskeviin virallisiin asiakirjoihin. |
+| esteetön        | accessible          | boolean                                                                                       | 0..1                |                                                                                                             |
 
 ### RakennuskohteenToimenpide {#rakennuskohteentoimenpide}
 
 Englanninkielinen nimi: **käännös tähän**
 
-Kuvaa käsitteen [RakennuskohteenToimenpide](../../kasitemalli/#rakennuskohteentoimenpide), Stereotyyppi: FeatureType (kohdetyyppi)
+Kuvaa käsitteen [RakennuskohteenToimenpide](../../kasitemalli/#rakennuskohteentoimenpide), erikoistaa luokkaa [VersioituObjekti](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#versioituobjekti), Stereotyyppi: FeatureType (kohdetyyppi)
 
 Maankäyttöprosessi jossa määriteltyjen vaiheiden mukaisesti tuotetaan rakennuskohde.
 
 **Ominaisuudet**
 
 |                              |                             |                                                           |                 |                                                                 |
-|---------------|---------------|---------------|---------------|---------------|
+|-------------|-------------|----------------|-------------|------------------|
 | Nimi                         | Name                        | Tyyppi                                                    | kardinaliteetti | kuvaus                                                          |
-| toimenpiteenlaji             | type of construction action | [RakentamistoimenpiteenLaji](#rakentamistoimenpiteenlaji) | 0..1            |                                                                 |
+| toimenpiteenlaji             | type of construction action | [RakentamistoimenpiteenLaji](#rakentamistoimenpiteenlaji) | 1               |                                                                 |
 | suunniteltuMuutos            |                             | [RakennuskohteenMuutos](#rakenuskohteenmuutos)            | 1..\*           |                                                                 |
-| kuvaus                       | description of action       | [LanguageString](#languagestring)                         | 0..1            | Toimenpiteen tarkentava kuvaus                                  |
+| kuvaus                       | description of action       | [LanguageString](#languagestring)                         | 0..\*           | Toimenpiteen tarkentava kuvaus                                  |
 | arvioituValmistumisajankohta |                             | [TM_Object](#tm_object)                                   | 0..1            |                                                                 |
 | muutosala                    | area undergoing changes     | [Measure](#measure)                                       | 0..1            | Muutostyön pinta-alatieto                                       |
 | PurkamisenSyy                | reason for demolition       | [LanguageString](#languagestring)                         | 0..\*           | Rakennuksen purkamisen syy (ainoastaan purkamistoimenpiteelle). |
@@ -456,10 +454,10 @@ Maankäyttöprosessi jossa määriteltyjen vaiheiden mukaisesti tuotetaan rakenn
 
 **Assosiaatiot**
 
-| Roolinimi       | Rolename       | Kohde                                                                                                                                                      | Kardinaliteetti | Kuvaus |
-|---------------|---------------|---------------|---------------|---------------|
-| Ilmastoselvitys | climate report | [ilmastoselvitys](#ilmastoselvitys-1)                                                                                                                      | 0..\*           |        |
-| liittyväAsia    | land use case  | [AlueidenkäyttöJaRakentamisasia](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#alueidenk%C3%A4ytt%C3%B6jarakentamisasia)  | 0..\*           |        |
+| Roolinimi       | Rolename       | Kohde                                                                                                                                                     | Kardinaliteetti | Kuvaus |
+|--------|--------|----------------------------------------|--------|--------|
+| ilmastoselvitys | climate report | [ilmastoselvitys](#ilmastoselvitys-1)                                                                                                                     | 0..\*           |        |
+| liittyväAsia    | land use case  | [AlueidenkäyttöJaRakentamisasia](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#alueidenk%C3%A4ytt%C3%B6jarakentamisasia) | 0..\*           |        |
 
 ### RakennuskohteenMuutos
 
@@ -469,23 +467,23 @@ Kuvaa käsitteen [Rakennuskohteenmuutos](../../kasitemalli/#rakennuskohteenmuuto
 
 **Ominaisuudet**
 
-|                                       |                                        |                                           |                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-|---------------|---------------|---------------|---------------|---------------|
-| Nimi                                  | Name                                   | Tyyppi                                    | Kardinaliteetti | Kuvaus                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| tilavuudenMuutos                      | change in volume                       | [Measure](#measure)                       | 0..1            | Kirjataan, kuinka paljon rakennuksen tilavuus muuttuu rakentamistoimenpiteellä, johon hankkeen rakennus on liitetty. Muutos voi olla positiivinen tai negatiivinen.                                                                                                                                                                                                                                                                                                  |
-| kerrosalanMuutos                      | change in gross floor area             | [Measure](#measure)                       | 0..1            | Kerrosten alat ulkoseinien ulkopinnan mukaan laskettuina sekä se kellarikerroksen tai ullakon ala, johon sijoitetaan tai voidaan näiden tilojen sijainnista, yhteyksistä, koosta, valoisuudesta ja muista ominaisuuksista päätellen sijoittaa rakennuksen pääasiallisen käyttötarkoituksen mukaisia tiloja. Kirjataan, kuinka paljon kerrosala muuttuu rakentamistoimenpiteellä, johon hankkeen rakennus on liitetty. Muutos voi olla positiivinen tai negatiivinen. |
-| rakennusoikeudellisenKerrosalanMuutos | change in permitted building area      | [Measure](#measure)                       | 0..1            | Kerrosalasta huomioidaan ulkoseinien sisällä oleva pinta-ala ja ulkoseinistä vain se osa, joka on paksuudeltaan enintään 250 mm. Kirjataan, jos tieto muuttuu rakentamistoimenpiteellä, johon hankkeen rakennus on liitetty. Kirjataan, kuinka paljon rakennusoikeudellinen kerrosala muuttuu rakentamistoimenpiteellä, johon hankkeen rakennus on liitetty. Muutos voi olla positiivinen tai negatiivinen.                                                          |
-| kokonaisalanMuutos                    | change in total area                   | [Measure](#measure)                       | 0..1            | Kaikkien kerrosten, kellareiden ja lämpöeristettyjen ullakoiden pinta-ala yhteensä ulkomitoin. Kokonaisalaan ei lasketa parvekkeita, katoksia eikä 160 cm:ä matalampia tiloja. Kirjataan, kuinka paljon kokonaisala muuttuu rakentamistoimenpiteellä, johon hankkeen rakennus on liitetty. Muutos voi olla positiivinen tai negatiivinen.                                                                                                                            |
-| kellarialanMuutos                     | change in basement area                | [Measure](#measure)                       | 0..1            | Kellarin pinta-alan muutos rakentamistoimenpiteen yhteydessä                                                                                                                                                                                                                                                                                                                                                                                                         |
-| kerrosluvunMuutos                     | change in number of storeys            | [Measure](#measure)                       | 0..1            | Rakennushankkeella kerrosluvun muuttuminen voi olla positiivinen tai negatiivinen.                                                                                                                                                                                                                                                                                                                                                                                   |
-| huoneistonMuutos                      |                                        | [HuoneistonMuutos](#huoneistomuutos)      | 0..\*           | Kuvaa rakennuksen tiettyyn huoneistoon tehdyn muutoksen                                                                                                                                                                                                                                                                                                                                                                                                              |
-| varustemuutos                         | change of equipment of building object | [RakennuksenVaruste](#rakennuksenvaruste) | 0..\*           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| kohdePoistuu                          |                                        | boolean                                   | 1               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|                                       |                                        |                                           |                     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+|--------|--------|--------|--------|------------------------------------------|
+| **Nimi**                              | **Name**                               | **Tyyppi**                                | **Kardinaliteetti** | **Kuvaus**                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| tilavuudenMuutos                      | change in volume                       | [Measure](#measure)                       | 0..1                | Kirjataan, kuinka paljon rakennuksen tilavuus muuttuu rakentamistoimenpiteellä, johon hankkeen rakennus on liitetty. Muutos voi olla positiivinen tai negatiivinen.                                                                                                                                                                                                                                                                                                  |
+| kerrosalanMuutos                      | change in gross floor area             | [Measure](#measure)                       | 0..1                | Kerrosten alat ulkoseinien ulkopinnan mukaan laskettuina sekä se kellarikerroksen tai ullakon ala, johon sijoitetaan tai voidaan näiden tilojen sijainnista, yhteyksistä, koosta, valoisuudesta ja muista ominaisuuksista päätellen sijoittaa rakennuksen pääasiallisen käyttötarkoituksen mukaisia tiloja. Kirjataan, kuinka paljon kerrosala muuttuu rakentamistoimenpiteellä, johon hankkeen rakennus on liitetty. Muutos voi olla positiivinen tai negatiivinen. |
+| rakennusoikeudellisenKerrosalanMuutos | change in permitted building area      | [Measure](#measure)                       | 0..1                | Kerrosalasta huomioidaan ulkoseinien sisällä oleva pinta-ala ja ulkoseinistä vain se osa, joka on paksuudeltaan enintään 250 mm. Kirjataan, jos tieto muuttuu rakentamistoimenpiteellä, johon hankkeen rakennus on liitetty. Kirjataan, kuinka paljon rakennusoikeudellinen kerrosala muuttuu rakentamistoimenpiteellä, johon hankkeen rakennus on liitetty. Muutos voi olla positiivinen tai negatiivinen.                                                          |
+| kokonaisalanMuutos                    | change in total area                   | [Measure](#measure)                       | 0..1                | Kaikkien kerrosten, kellareiden ja lämpöeristettyjen ullakoiden pinta-ala yhteensä ulkomitoin. Kokonaisalaan ei lasketa parvekkeita, katoksia eikä 160 cm:ä matalampia tiloja. Kirjataan, kuinka paljon kokonaisala muuttuu rakentamistoimenpiteellä, johon hankkeen rakennus on liitetty. Muutos voi olla positiivinen tai negatiivinen.                                                                                                                            |
+| kellarialanMuutos                     | change in basement area                | [Measure](#measure)                       | 0..1                | Kellarin pinta-alan muutos rakentamistoimenpiteen yhteydessä                                                                                                                                                                                                                                                                                                                                                                                                         |
+| kerrosluvunMuutos                     | change in number of storeys            | [integer]                                 | 0..1                | Rakennushankkeella kerrosluvun muuttuminen voi olla positiivinen tai negatiivinen.                                                                                                                                                                                                                                                                                                                                                                                   |
+| huoneistonMuutos                      |                                        | [HuoneistonMuutos](#huoneistomuutos)      | 0..\*               | Kuvaa rakennuksen tiettyyn huoneistoon tehdyn muutoksen                                                                                                                                                                                                                                                                                                                                                                                                              |
+| varustemuutos                         | change of equipment of building object | [RakennuksenVaruste](#rakennuksenvaruste) | 0..\*               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| kohdePoistuu                          |                                        | boolean                                   | 1                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 **Assosiaatiot**
 
 | Roolinimi             | Rolename | Kohde                           | Kardinaliteetti | Kuvaus                                                                                      |
-|---------------|---------------|---------------|---------------|---------------|
+|-----------|-----------|-----------|-----------|-----------------------------|
 | kohdeMuutoksenJälkeen |          | [RakennusKohde](#rakennuskohde) | 0..\*           |                                                                                             |
 | kohdeEnnenMuutosta    |          | [RakennusKohde](#rakennuskohde) | 0..\*           | Tiedot rakennuskohteesta tai -kohteista sellaisena kuin on tallennettu ennen tätä muutosta. |
 
@@ -498,45 +496,45 @@ Kuvaa käsitteen [TunnuksettomanOmistajanTiedot](../../kasitemalli/#tunnuksettom
 **Ominaisuudet**
 
 | Nimi             | Name | Tyyppi                              | Kardinaliteetti | Kuvaus                                                    |
-|---------------|---------------|---------------|---------------|---------------|
+|------------|------------|-------------|------------|------------------------|
 | osoite           |      | [CharacterString](#characterstring) | 1               | Tunnuksettoman omistajan kotimainen tai ulkomainen osoite |
 | muuTunnistetieto |      | [CharacterString](#characterstring) | 0..1            |                                                           |
 | nimi             |      | [CharacterString](#characterstring) | 0..1            |                                                           |
 
 ### RakennuksenOsittelu {#rakennuksenosittelu}
 
-Englanninkielinen nimi: **käännös tähän**
+Englanninkielinen nimi:
 
 Kuvaa käsitteen [RakennuksenOsittelu](../../kasitemalli/#rakennuksenosittelu), Stereotyyppi: DataType (tietotyyppi)
 
 | Nimi            | Name        | Tyyppi                            | Kardinaliteetti | Kuvaus |
-|---------------|---------------|---------------|---------------|---------------|
+|-------------|-------------|----------------------|-------------|-------------|
 | ositteluperuste |             | [RakennuksenOsittelunLaji]        | 1               |        |
 | kuvaus          | description | [LanguageString](#languagestring) | 0..\*           |        |
 
 ### RakennuskohteenSijaintitiedot
 
-Englanninkielinen nimi: **käännös tähän**
+Englanninkielinen nimi:
 
 Kuvaa käsitteen [RakennuskohteenSijaintitiedot](../../kasitemalli/#rakennuskohteensijaintitiedot), Stereotyyppi: DataType (tietotyyppi)
 
 **Ominaisuudet**
 
 | Nimi               | Name                   | Tyyppi                              | Kardinaliteetti | Kuvaus |
-|---------------|---------------|---------------|---------------|---------------|
+|-------------|-------------|--------------------|-------------|-------------|
 | äänestysaluenumero | voting district number | [CharacterString](#characterstring) | 0..1            |        |
 | sijaintikeskipiste |                        | [point](#point)                     | 0..1            |        |
 
 **Assosiaatiot**
 
-| Nimi               | Name | Tyyppi                                                                                                                   | Kardinaliteetti | Kuvaus |
-|---------------|---------------|---------------|---------------|---------------|
-| hallinnollinenAlue |      | [HallinnollinenAlue](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#hallinnollinenalue)  | 0..\*           |        |
-| kohteenOsoite      |      | [Osoite](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#osoite)                          | 0..\*           |        |
+| Nimi               | Name   | Tyyppi                                                                                                                  | Kardinaliteetti | Kuvaus |
+|---------------|---------|-----------------------------|---------|---------|
+| hallinnollinenAlue |        | [HallinnollinenAlue](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#hallinnollinenalue) | 0..\*           |        |
+| kohteenOsoite      | addres | [Osoite](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#osoite)                         | 0..\*           |        |
 
 ### RakennuksenSisäänkäynti
 
-Englanninkielinen nimi: **käännös tähän**
+Englanninkielinen nimi:
 
 Kuvaa käsitteen [RakennuksenSisäänkäynti](../../kasitemalli/#rakennuskohteensijaintitiedot),
 
@@ -548,7 +546,7 @@ Kuvaa käsitteen [RakennuksenSisäänkäynti](../../kasitemalli/#rakennuskohteen
 
 ### RakennuksenVaruste {#rakennuksenvaruste}
 
-Englanninkielinen nimi: **käännös tähän**
+Englanninkielinen nimi:
 
 Kuvaa käsitteen [RakennuksenVaruste](../../kasitemalli/#rakennuksenVaruste), Stereotyyppi: DataType (tietotyyppi)
 
@@ -557,20 +555,20 @@ Rakennukseen, rakennelmaan tai huoneistoon kiinteästi asennettu järjestelmä t
 **Ominaisuudet**
 
 | Nimi             | Name              | Tyyppi                     | Kardinaliteetti | Kuvaus                                                     |
-|---------------|---------------|---------------|---------------|---------------|
+|------------|------------|------------|------------|------------------------|
 | laji             | type of equipment | [RakennuksenVarusteenLaji] | 1               | Ylätason luokittelu, minkä tyyppisestä varusteesta on kyse |
 | kuuluuKohteeseen |                   | boolean                    | 0..1            |                                                            |
 
 ### Materiaalitiedot {#materiaalitiedot}
 
-Englanninkielinen nimi: **käännös tähän**
+Englanninkielinen nimi:
 
 Kuvaa käsitteen [Materiaalitiedot](../../kasitemalli/#materiaalitiedot), Stereotyyppi: DataType (tietotyyppi)
 
 **Ominaisuudet**
 
 | Nimi                                    | Name                | Tyyppi                             | Kardinaliteetti | Kuvaus                                                                                                                                                  |
-|---------------|---------------|---------------|---------------|---------------|
+|----------|----------|----------|----------|--------------------------------|
 | rakentamistapa                          | construction method | [Rakentamistapa]                   | 0..1            | Ilmoitetaan, onko rakennus rakennettu elementeistä vai tehty paikalla. Rakentamistapa määräytyy rakennuksen rungon pääasiallisen rakennustavan mukaan.  |
 | kantavienrakenteidenRakennusaine        |                     | [KantavienRakenteidenRakennusaine] | 0..\*           | Kantavanrakenteen rakennusaine                                                                                                                          |
 | julkisivumateriaali                     | facade material     | [Julkisivumateriaali]              | 0..\*           |                                                                                                                                                         |
@@ -580,14 +578,14 @@ Kuvaa käsitteen [Materiaalitiedot](../../kasitemalli/#materiaalitiedot), Stereo
 
 #### KantavienRakenteidenRakennusaine
 
-Englanninkielinen nimi: **käännös tähän**
+Englanninkielinen nimi:
 
 Kuvaa käsitteen [KantavienRakenteidenRAkennusaine](../../kasitemalli/#kantavienrakenteidenrakennusaine), Stereotyyppi: DataType (tietotyyppi)
 
 **Ominaisuudet**
 
 | Nimi         | Name    | Tyyppi                                   | Kardinaliteetti | Kuvaus                                 |
-|---------------|---------------|---------------|---------------|---------------|
+|------------|------------|-------------------|------------|------------------|
 | laji         |         | [KantavienRakenteidenRakennusaineenlaji] | 1               | Kantavan rakenteen rakennusaineen laji |
 | ensisijainen | primary | boolean                                  | 1               |                                        |
 
@@ -600,7 +598,7 @@ Kuvaa käsitteen [Julkisivumateriaali](../../kasitemalli/#julkisivumateriaali), 
 **Ominaisuudet**
 
 | Nimi         | Name                             | Tyyppi                         | Kardinaliteetti | Kuvaus                         |
-|---------------|---------------|---------------|---------------|---------------|
+|--------------|---------------|--------------|--------------|--------------|
 | laji         | type of facade building material | [JulkisivunRakennusaineenLaji] | 1               | Julkisivun rakennusaineen laji |
 | ensisijainen | primary                          | boolean                        | 1               |                                |
 
@@ -613,7 +611,7 @@ Kuvaa käsitteen [Rakennuksenkäyttötiedot](../../kasitemalli/#rakennuksenkaytt
 **Ominaisuudet**
 
 | Nimi                     | Name               | Tyyppi                       | Kardinaliteetti | Kuvaus                                                                                                      |
-|---------------|---------------|---------------|---------------|---------------|
+|-----------|-----------|-----------|-----------|------------------------------|
 | käyttöönottopäivämäärä   | commissioning date | date                         | 0..1            | Rakennuksen ensimmäisen käyttöönottokatselmuksen hyväksymisen päivä                                         |
 | käytössäolo              |                    | [integer](#integer)          | 0..1            | Rakennuksen käytön tilanne. Rakennuksen käytössäolotieto päätellään mm. asumistietojen perusteella VTJ:ssä. |
 | käyttötarkoitus          | purpose            | [RakennuksenKäyttötarkoitus] | 0..\*           | kuvaa rakennuksen osan pääasiallista käyttötarkoitusta voimassa olevan koodiston sallimin arvoin            |
@@ -631,31 +629,31 @@ Rakennuksen tai sen osan pääasiallinen käyttötarkoitus. Attribuutin arvo mä
 **Ominaisuudet**
 
 | Nimi         | Name | Tyyppi                 | Kardinaliteetti | Kuvaus                                                                                                                                                                                                                                                                                        |
-|---------------|---------------|---------------|---------------|---------------|
+|-------|-------|-------|-------|---------------------------------------------|
 | laji         |      | [Rakennusluokitus2018] | 1               | Rakennusluokitus luokittelee rakennuksia niiden pääasiallisen käyttötarkoituksen mukaan. Rakennuksen tilojen ja tilavaatimusten tulee olla sen käyttötarkoitusluokalle ominaisia. Luokituksen kohdeyksikkönä on rakennus, joka sisältää asumiseen tai muihin toimintoihin tarkoitettua tilaa. |
 | ensisijainen |      | boolean                | 1               |                                                                                                                                                                                                                                                                                               |
 
 ### Energiatiedot {#energiatiedot}
 
-Englanninkielinen nimi: **käännös tähän**
+Englanninkielinen nimi:
 
 Kuvaa käsitteen [Energiatiedot](../../kasitemalli/#energiatiedot), Stereotyyppi: DataType (tietotyyppi)
 
 **Ominaisuudet**
 
-| Nimi                                         | Name                     | Tyyppi                                                                                                           | Kardinaliteetti | Kuvaus                                                                                           |
-|---------------|---------------|---------------|---------------|---------------|
-| energialuokka                                | energy rating            | [Energialuokka]                                                                                                  | 0..1            | Rakennuksen energiatehokkuusdirektiivin mukainen energialuokka.                                  |
-| laskennallinenEnergiatehokkuudenVertailuluku | energy efficiency rating | double                                                                                                           | 0..1            |                                                                                                  |
-| lämmitystapa                                 | heating method           | [Lämmitystapa]                                                                                                   | 0..\*           | Lämmitystapa                                                                                     |
-| lämmitysenergianLähde                        | heating energy source    | [LämmitysenergianLähde]                                                                                          | 0..\*           | Lämmitysenergian lähde                                                                           |
-| jäähdytystapa                                | cooling method           | [Jäähdytystapa]                                                                                                  | 0..\*           | Jäähdytystapa                                                                                    |
-| jäähdytysenergianLähde                       | cooling energy source    | [Jäähdytysenergianlähde]                                                                                         | 0..\*           | Jäähdytysenergeian lähde                                                                         |
-| sähköenrgianLähde                            | electrical energy source | [SähköenergianLähde]                                                                                             | 0..\*           | Sähköenergian lähde                                                                              |
-| lämmitettyNettopintaAla                      | net heated area          | [Measure](#measure)                                                                                              | 0..1            | Rakennuksen lämmitetty pinta-ala mm. energiatodistusta ja hiilijalanjäljen vertailuarvoa varten. |
-| lämmitettyTilavuus                           | heated volume            | [Measure](#measure)                                                                                              | 0..1            | Rakennuksen lämmitetty tilavuus mm. energiatodistusta ja hiilijalanjäljen vertailuarvoa varten.  |
-| energiatodistus                              | energy certificate       | [Liiteasiakirja](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#liiteasiakirja)  | 0..1            |                                                                                                  |
-| laskennallinenOstoenergianKulutus            |                          | [EnergianKulutus]                                                                                                | 0..1            |                                                                                                  |
+| Nimi                                         | Name                     | Tyyppi                                                                                                          | Kardinaliteetti | Kuvaus                                                                                           |
+|------------|------------|--------------------|------------|-----------------|
+| energialuokka                                | energy rating            | [Energialuokka]                                                                                                 | 0..1            | Rakennuksen energiatehokkuusdirektiivin mukainen energialuokka.                                  |
+| laskennallinenEnergiatehokkuudenVertailuluku | energy efficiency rating | double                                                                                                          | 0..1            |                                                                                                  |
+| lämmitystapa                                 | heating method           | [Lämmitystapa]                                                                                                  | 0..\*           | Lämmitystapa                                                                                     |
+| lämmitysenergianLähde                        | heating energy source    | [LämmitysenergianLähde]                                                                                         | 0..\*           | Lämmitysenergian lähde                                                                           |
+| jäähdytystapa                                | cooling method           | [Jäähdytystapa]                                                                                                 | 0..\*           | Jäähdytystapa                                                                                    |
+| jäähdytysenergianLähde                       | cooling energy source    | [Jäähdytysenergianlähde]                                                                                        | 0..\*           | Jäähdytysenergeian lähde                                                                         |
+| sähköenrgianLähde                            | electrical energy source | [SähköenergianLähde]                                                                                            | 0..\*           | Sähköenergian lähde                                                                              |
+| lämmitettyNettopintaAla                      | net heated area          | [Measure](#measure)                                                                                             | 0..1            | Rakennuksen lämmitetty pinta-ala mm. energiatodistusta ja hiilijalanjäljen vertailuarvoa varten. |
+| lämmitettyTilavuus                           | heated volume            | [Measure](#measure)                                                                                             | 0..1            | Rakennuksen lämmitetty tilavuus mm. energiatodistusta ja hiilijalanjäljen vertailuarvoa varten.  |
+| energiatodistus                              | energy certificate       | [Liiteasiakirja](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#liiteasiakirja) | 0..1            |                                                                                                  |
+| laskennallinenOstoenergianKulutus            |                          | [EnergianKulutus]                                                                                               | 0..1            |                                                                                                  |
 
 #### Lämmitystapa
 
@@ -668,7 +666,7 @@ Tarkoitetaan rakennuksen lämmittämisessä käytettyä lämmitystapaa.
 **Ominaisuudet**
 
 | Nimi         | Name                   | Tyyppi              | Kardinaliteetti | Kuvaus                                 |
-|---------------|---------------|---------------|---------------|---------------|
+|-------------|-------------|-------------|-------------|--------------------|
 | laji         | type of heating method | [LämmitystavanLaji] | 1               | Rakennuksen pääasiallinen lämmitystapa |
 | ensisijainen | primary                | boolean             | 1               |                                        |
 
@@ -694,7 +692,7 @@ Kuvaa käsitteen [SähköenergianLähde](../../kasitemalli/#sahkoenergianlahde),
 **Ominaisuudet**
 
 | Nimi         | Name                             | Tyyppi                     | Kardinaliteetti | Kuvaus                    |
-|---------------|---------------|---------------|---------------|---------------|
+|--------------|----------------|--------------|--------------|--------------|
 | laji         | type of electrical energy source | [sähköenergianLähteenLaji] | 1               | Sähköenergianlähteen laji |
 | ensisijainen | primary                          | boolean                    | 1               |                           |
 
@@ -708,7 +706,7 @@ Kuvaa käsitteen [Energiankulutus](../../kasitemalli/#energiankulutus), Stereoty
 
 | Nimi                 | Name                     | Tyyppi              | Kardinaliteetti | Kuvaus                   |
 |---------------|---------------|---------------|---------------|---------------|
-| laji                 | type of delivered energy | [OstoenergianLaji]  | 1               | Ostoenergianlähteen laji |
+| energialaji          | type of delivered energy | [OstoenergianLaji]  | 1               | Ostoenergianlähteen laji |
 | energiamäärävuodessa |                          | [Measure](#measure) | 1               |                          |
 
 #### JäähdytysenergianLähde
@@ -733,24 +731,24 @@ Kuvaa käsitteen [LämmitysenergianLähde](../../kasitemalli/#lammitysenergianla
 **Ominaisuudet**
 
 | Nimi         | Name                          | Tyyppi                        | Kardinaliteetti | Kuvaus                                                                         |
-|---------------|---------------|---------------|---------------|---------------|
+|------------|------------|------------|------------|--------------------------|
 | laji         | type of heating energy source | [LämmitysenergianLähteenLaji] | 1               | Koodiston avulla ilmoitetaan rakennuksen pääasiallinen lämmitysenergian lähde. |
 | ensisijainen | primary                       | boolean                       | 1               |                                                                                |
 
 ### Talotekniikkatiedot {#talotekniikkatiedot}
 
-Englanninkielinen nimi: **käännös tähän**
+Englanninkielinen nimi:
 
 Kuvaa käsitteen [Talotekniikkatiedot](../../kasitemalli/#talotekniikkatiedot), Stereotyyppi: DataType (tietotyyppi)
 
 **Ominaisuudet**
 
 | Nimi                   | Name                  | Tyyppi                     | Kardinaliteetti | Kuvaus |
-|---------------|---------------|---------------|---------------|---------------|
+|--------------|--------------|----------------|--------------|--------------|
 | ilmanvaihtotapa        | ventilation method    | [Ilmanvaihtotapa]          | 0..\*           |        |
-| viemäröintitapa        | sewerage method       | [JätevesienkäsittelynLaji] | 0..1            |        |
+| viemäröintitapa        | sewerage method       | [JätevesienKäsittelynLaji] | 0..1            |        |
 | talousvesi             | household water       | [TalousvedenLaji]          | 0..1            |        |
-| Verkostoliittymä       | network connection    | [VerkostoliittymänLaji]    | 0..\*           |        |
+| verkostoliittymä       | network connection    | [VerkostoliittymänLaji]    | 0..\*           |        |
 | hulevedenKäsittelytapa | storm water treatment | [HulevedenKäsittelynLaji]  | 0..1            |        |
 
 #### Ilmanvaihtotapa
@@ -762,7 +760,7 @@ Kuvaa käsitteen [Ilmanvaihtotapa](../../kasitemalli/#ilmanvaihtotapa), Stereoty
 **Ominaisuudet**
 
 | Nimi         | Name                       | Tyyppi                 | Kardinaliteetti | Kuvaus                                                           |
-|---------------|---------------|---------------|---------------|---------------|
+|------------|------------|------------|------------|-------------------------|
 | laji         | type of ventilation method | [IlmanvaihtotavanLaji] | 1               | Koodistolla kuvataan rakennuksen ilmanvaihtotavan hallintatapaa. |
 | ensisijainen | primary                    | boolean                | 1               |                                                                  |
 
@@ -775,7 +773,7 @@ Kuvaa käsitteen [Verkostoliittymä](../../kasitemalli/#verkostoliittyma), Stere
 **Ominaisuudet**
 
 | Nimi          | Name                       | Tyyppi                  | Kardinaliteetti | Kuvaus                                                    |
-|---------------|---------------|---------------|---------------|---------------|
+|-------------|-------------|-------------|-------------|-----------------------|
 | laji          | type of network connection | [VerkostoliittymänLaji] | 1               | Koodistolla kuvataan rakennuksen verkostoliittymän lajia. |
 | liitetty      |                            | boolean                 | 1               |                                                           |
 | liittymäpiste |                            | [Geometry]              | 0..1            |                                                           |
@@ -789,7 +787,7 @@ Kuvaa käsitteen [ulkokuorenTiedot](../../kasitemalli/#ulkokuorentiedot), Stereo
 **Ominaisuudet**
 
 | Nimi                            | Name                     | Tyyppi              | Kardinaliteetti | Kuvaus                                                                                                                                                                                                                                                                                                                     |
-|---------------|---------------|---------------|---------------|---------------|
+|--------|--------|--------|--------|------------------------------------------|
 | kerrosluku                      | number of storeys        | [integer](#integer) | 0..1            | Rakennuksen maanpäällisten kerrosten lukumäärä. Kerroslukuun lasketaan kaikki ne kokonaan tai pääasiallisesti maanpinnan yläpuolella olevat kerrokset (=ei kellarikerrokset), joissa on asuin- tai työ (toimi-) tiloja tai rakennuksen pääasiallisen käyttötarkoituksen mukaisia tiloja. Kerroslukuun ei lasketa ullakkoa. |
 | korkeus                         | height                   | [Measure](#measure) | 0..1            | Absoluuttinen korkeus rakennuksen tai rakennuksen osan korkeimmasta kohdasta.                                                                                                                                                                                                                                              |
 | lentoeste                       | flight obstacle          | boolean             | 1               | Tieto siitä, onko kohde lentoeste. Kohde tulee määritellä lentoesteeksi EUROCONTROL Terrain and Obstacle Data Manual Edition 2.1 -dokumentin perusteella (ISBN: 978-2-87497-079-5). Kohteen määrittelyyn lentoesteeksi vaikuttavat mm. kohteen etäisyys kiitoradasta, kohteen suhteellinen korkeus ja maanpinnan korkeus.  |
@@ -797,7 +795,7 @@ Kuvaa käsitteen [ulkokuorenTiedot](../../kasitemalli/#ulkokuorentiedot), Stereo
 | suhdeMaanpintaan                | relation to ground level | [SuhdeMaanpintaan]  | 0..1            | Tieto siitä, missä rakennus sijaitsee suhteessa maan pintaan.                                                                                                                                                                                                                                                              |
 | tilavuus                        | volume                   | [Measure](#measure) | 0..1            | Rakennuksen tilavuus lasketaan sen tilan perusteella, jota rajoittavat ulkoseinien ulkopinnat, alapohjan alapinta ja yläpohjan yläpinta.                                                                                                                                                                                   |
 | kerrosala                       | gross floor area         | [Integer](#integer) | 0..1            | Kerrosten alat ulkoseinien ulkopinnan mukaan laskettuina sekä se kellarikerroksen tai ullakon ala, johon sijoitetaan tai voidaan näiden tilojen sijainnista, yhteyksistä, koosta, valoisuudesta ja muista ominaisuuksista päätellen sijoittaa rakennuksen pääasiallisen käyttötarkoituksen mukaisia tiloja.                |
-| rakennusoikeudellinen kerrosala | permitted building area  | [Measure](#measure) | 0..1            | Kerrosalasta huomioidaan ulkoseinien sisällä oleva pinta-ala ja ulkoseinistä vain se osa, joka on paksuudeltaan enintään 250 mm.                                                                                                                                                                                           |
+| rakennusoikeudellinen Kerrosala | permitted building area  | [Measure](#measure) | 0..1            | Kerrosalasta huomioidaan ulkoseinien sisällä oleva pinta-ala ja ulkoseinistä vain se osa, joka on paksuudeltaan enintään 250 mm.                                                                                                                                                                                           |
 
 ### SisätilojenTiedot
 
@@ -808,7 +806,7 @@ Kuvaa käsitteen [SisätilojenTiedot](../../kasitemalli/#sisatilojentiedot), Ste
 **Ominaisuudet**
 
 | Nimi                         | Name                            | Tyyppi              | Kardinaliteetti | Kuvaus                                                                                                                                                                                                                                                                                          |
-|---------------|---------------|---------------|---------------|---------------|
+|--------|--------|--------|--------|-----------------------------------------|
 | huoneistoala                 | floor area                      | [Measure](#measure) | 0..1            | Ala, jota rajaavat toisaalta huoneistoa ympäröivien seinien, toisaalta huoneiston sisällä olevien kantavien seinien ja muiden rakennukselle välttämättömien rakennusosien huoneiston puoleiset pinnat. Pinta-alaan lasketaan mukaan vain se osa, jossa huonekorkeus ylittää 160 cm.             |
 | väestösuojanHenkilömäärä     | civil defence shelter capacity  | [integer](#integer) | 0..1            | Tila, joka on tarkoitettu antamaan ihmisille suojaa asevaikutuksilta, rakennussortumilta, ionisoivalta säteilyltä ja myrkyllisiltä aineilta.                                                                                                                                                    |
 | kellariala                   | basement area                   | [Measure](#measure) | 0..1            | Kellarikerrosten yhteenlaskettu pinta-ala. Kellarikerroksen pinta-ala on kellarikerrosta ympäröivien seinien ulkopintojen rajoittama ala. Mukaan ei lasketa 160 cm:ä matalampia tiloja. Kellarikerroksiksi luetaan kaikki kokonaan tai pääasiallisesti maanpinnan alapuolella olevat kerrokset. |
@@ -825,7 +823,7 @@ Kuvaa käsitteen [RakennettuTila](../../kasitemalli/#rakennettutila), erikoistaa
 **Ominaisuudet**
 
 | Nimi                         | Name                            | Tyyppi                               | Kardinaliteetti | Kuvaus                                              |
-|---------------|---------------|---------------|---------------|---------------|
+|--------------|--------------|--------------|--------------|------------------|
 | laji                         | space type                      | [HuoneenTaiMuunTilanLaji]            | 0..1            | Käyttötarkoituksen laji                             |
 | käyttötarkoitus              | purpose of space                | [HuoneenTaiMuunTilanKäyttötarkoitus] | 0..1            | tilan käyttötarkoitus                               |
 | pysyväTilaTunnus             | permanent space indentifier     | [CharacterString](#characterstring)  | 0..1            |                                                     |
@@ -836,9 +834,9 @@ Kuvaa käsitteen [RakennettuTila](../../kasitemalli/#rakennettutila), erikoistaa
 
 **Assosiaatiot**
 
-| Roolinimi     | Rolename | Kohde            | Kardinaliteetti | Kuvaus |
-|---------------|----------|------------------|-----------------|--------|
-| sisältyväTila |          | [RakennuksenOsa] | 0..\*           |        |
+| Roolinimi               | Rolename | Kohde            | Kardinaliteetti | Kuvaus |
+|--------------|--------------|---------------|--------------|--------------|
+| sisältäväRakennuksenOSa |          | [RakennuksenOsa] | 0..\*           |        |
 
 ### Huoneisto
 
@@ -851,7 +849,7 @@ Rakennukseen liittyvä hallintakohde, jolla on oma välitön sisäänkäynti.
 **Ominaisuudet**
 
 | Nimi                   | Name                 | Tyyppi                                   | Kardinaliteetti | Kuvaus                                                                                                                                                                 |
-|---------------|---------------|---------------|---------------|---------------|
+|----------|----------|----------|----------|----------------------------------|
 | elinkaarenvaihe        | life-cycle stage     | [HuoneistonElinkaarenVaihe]              | 1               |                                                                                                                                                                        |
 | varuste                | apartment equipment  | [HuoneistonVaruste]                      | 0..\*           |                                                                                                                                                                        |
 | pysyväHuoneistoTunnus  | apartment identifier | [CharacterString](#characterstring)      | 0..1            | Pysyvä huoneistotunnus (VTJ-PHT) on jokaiselle huoneistolle ja uudisrakennushankkeen huoneistolle annettava 10-merkkinen tunnus                                        |
@@ -859,7 +857,7 @@ Rakennukseen liittyvä hallintakohde, jolla on oma välitön sisäänkäynti.
 | huoneistoLaji          |                      | [Huoneistotyyppi]                        | 0..1            |                                                                                                                                                                        |
 | huoneistoala           | floor area           | [Measure](#measure)                      | 0..1            | Huoneistoa ympäröivien seinien sisäpintojen mukaan laskettu pinta-ala. Pinta-alaan lasketaan mukaan vain se osa, jossa huonekorkeus ylittää 160 cm.                    |
 | huoneidenlukumäärä     | number of rooms      | [integer](#integer)                      | 0..1            | Huoneeksi katsotaan rakennuksessa oleva tila, jota ympäröivät lattia, katto ja seinät. Huoneiden lukumäärään ei lasketa keittiötä.                                     |
-| keittiötyyppi          | kitchen type         | [keittiötyyppi]                          | 0..1            | Tieto siitä, minkälainen keittiö huoneistossa on.                                                                                                                      |
+| keittiötyyppi          | kitchen type         | [Keittiötyyppi]                          | 0..1            | Tieto siitä, minkälainen keittiö huoneistossa on.                                                                                                                      |
 | käymälätyyppi          |                      | [Käymälätyyppi]                          | 0..1            | Koodisto kertoo, minkä tyyppinen käymälä huoneessa on.                                                                                                                 |
 | käyttöönottopäivämäärä | commissioning date   | Date                                     | 0..1            | Päivämäärä, jolloin huoneisto on hyväksytty käyttöönotettavaksi viimeisimmän siihen tehdyn käyttöönottokatselmusta vaativan muutoksen jälkeen.                         |
 | käyttöala              | useful floor area    | [Measure](#measure)                      | 0..1            | Rakennuksen kokonaislaajuus, johon lasketaan bruttoalan lisäksi mukaan myös rakennetut, ei-maanvaraiset ulkotilat, kuten parvekkeet, luhtikäytävät, terassit ja kannet |
@@ -867,10 +865,10 @@ Rakennukseen liittyvä hallintakohde, jolla on oma välitön sisäänkäynti.
 **Assosiaatiot**
 
 | Roolinimi               | Rolename         | Kohde                 | Kardinaliteetti | Kuvaus                                                                                                   |
-|---------------|---------------|---------------|---------------|---------------|
+|-----------|-----------|-----------|-----------|-------------------------------|
 | huone                   | room             | [Huone]               | 0..\*           | rakennuksen tila, jonka pinta-ala, valoaukko ja huonekorkeus täyttävät laissa säädetyt minimivaatimukset |
 | sisältäväRakennuksenOsa | building section | [RakennuksenOsa]      | 0..\*           |                                                                                                          |
-| Rakennus                | building         | [Rakennus](#rakennus) | 1               |                                                                                                          |
+| sisältäväRakennus       | building         | [Rakennus](#rakennus) | 1               |                                                                                                          |
 
 ### Huone
 
@@ -883,7 +881,7 @@ Rakennuksen tila, jonka pinta-ala, valoaukko ja huonekorkeus täyttävät laissa
 **Ominaisuudet**
 
 | Nimi       | Name           | Tyyppi              | Kardinaliteetti | Kuvaus                              |
-|--------------|--------------|--------------|--------------|----------------|
+|-------------|-------------|-------------|-------------|--------------------|
 | asuinhuone | habitable room | boolean             | 1               | tila täyttää asuinhuoneen kriteerit |
 | huoneala   | net room area  | [Measure](#measure) | 0..1            |                                     |
 
@@ -896,7 +894,7 @@ Kuvaa käsitteen [OsoiterakenteenMukainenHuoneistoTunnus](../../kasitemalli/#oso
 **Ominaisuudet**
 
 | Nimi        | Name                                    | Tyyppi                              | Kardinaliteetti | Kuvaus                                                                                                                                                   |
-|---------------|---------------|---------------|---------------|---------------|
+|----------|----------|----------|----------|---------------------------------|
 | kirjainosa  | apartment identifier letter suffix      | [characterString](#characterstring) | 1               | Useamman kuin yhden huoneiston käsittävässä rakennuksessa tai rakennuksissa sijaitsevien huoneistojen tunnuksiin kuuluva kirjain                         |
 | jakokirjain | apartment identifier subdivision letter | [characterString](#characterstring) | 0..1            | Kirjain, joka on lisätty huoneistotunnuksen numero-osaan silloin, kun alkuperäinen huoneisto on jaettu kahdeksi tai useammaksi erilliseksi huoneistoksi. |
 | numeroOsa   | apartment identifier number             | [integer](#integer)                 | 1               | Useamman kuin yhden huoneiston käsittävässä rakennuksessa sijaitsevan huoneiston tunnukseen kuuluva numero                                               |
@@ -910,7 +908,7 @@ Kuvaa käsitteen [HuoneistonVaruste](../../kasitemalli/#huoneistonvaruste), Ster
 **Ominaisuudet**
 
 | Nimi              | Name              | Tyyppi                    | Kardinaliteetti | Kuvaus |
-|---------------|---------------|---------------|---------------|---------------|
+|--------------|--------------|-----------------|--------------|--------------|
 | laji              | type of equipment | [HuoneistonVarusteenLaji] | 1               |        |
 | kuuluuHuoneistoon |                   | boolean                   | 0..1            |        |
 
@@ -927,23 +925,22 @@ Selvitys, jossa raportoidaan rakentamistoimenpiteen hiilijalanjälki ja hiilikä
 **Ominaisuudet**
 
 | Nimi                          | Name        | Tyyppi                                       | Kardinaliteetti | Kuvaus                                                                                             |
-|---------------|---------------|---------------|---------------|---------------|
+|------------|------------|------------|------------|---------------------------|
 | otsikko                       | title       | [LanguageString](#languagestring)            | 0..\*           | Selvityksen otsikko                                                                                |
 | kuvaus                        | description | [LanguageString](#languagestring)            | 0..\*           | Kohteen sisällöstä kertova tieto                                                                   |
 | laatimispäivä                 |             | Date                                         |                 | Selvityksen laatimispäivämäärä                                                                     |
 | kohteenVähähiilisyys          |             | [Rakennuskohdekohtaisetvähähiilisyystiedot]  | 1..\*           |                                                                                                    |
 | paikanVähähiilisyys           |             | [RakennuspaikkakohtaisetVähähiilisyystiedot] |                 |                                                                                                    |
-| käytetynArviointijaksonpituus |             | [Measure](#measure)                          |                 | ajanjakson pituus, jolle rakennuksen vähähiilisyyden arviointi tehdään, yksikkönä vuosi            |
+| käytetynArviointijaksonpituus |             | [Measure](#measure)                          | 1               | ajanjakson pituus, jolle rakennuksen vähähiilisyyden arviointi tehdään, yksikkönä vuosi            |
 | sovellettavatRajaArvot        |             | koodiarvo                                    | 0..\*           | Hiilijalanjäljen ja -kädenjäljen arvioinnissa sovellettujen raja-arvomääräysten tunnus koodistossa |
 | käytetytLaskentaohjelmistot   |             | [LanguageString](#languagestring)            | 1..\*           | Ilmastoselvityksen hiilijalan- ja -kädenjäljen laskentaan käytetyn laskentaohjelmiston nimi        |
 
 **Assosiaatiot**
 
-| Roolinimi  | Rolename | Kohde                                                                                                                      | Kardinaliteetti | Kuvaus                                                                    |
-|---------------|---------------|---------------|---------------|---------------|
-| laatija    |          | [SuunnitelmanLaatija](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#suunnitelmanlaatija)  | 1..\*           | laatija/laadinnan määritelmä                                              |
-| kohde      |          | [RakennusTaiSenOsa]                                                                                                        | 1..\*           | Rakennuskohde, jonka rakentamista tai korjaamista ilmastoselvitys koskee. |
-| toimenpide |          | [Rakennuskohteentoimenpide](#rakennuskohteentoimenpide)                                                                    | 1               | Toimenpide, jonka ilmastovaikutuksia ilmastoselvitys koskee.              |
+| Roolinimi | Rolename | Kohde                                                                                                                     | Kardinaliteetti | Kuvaus                                                                    |
+|----------|----------|----------------------------|----------|---------------|
+| laatija   |          | [SuunnitelmanLaatija](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#suunnitelmanlaatija) | 1..\*           | laatija/laadinnan määritelmä                                              |
+| kohde     |          | [RakennusTaiSenOsa]                                                                                                       | 1..\*           | Rakennuskohde, jonka rakentamista tai korjaamista ilmastoselvitys koskee. |
 
 ### Hiilijalanjälkitiedot
 
@@ -956,7 +953,7 @@ Ilmastoselvitykseen kuuluvat, yhden rakentamistoimenpiteen arvioidut hiilijalanj
 **Ominaisuudet**
 
 | Nimi                           | Name | Tyyppi                | Kardinaliteetti | Kuvaus                                                                |
-|---------------|---------------|---------------|---------------|---------------|
+|------------|------------|------------|------------|---------------------------|
 | rajaArvostaPoikkeamisenPeruste |      | [PoikkeamisenPeruste] | 0..\*           | Syy hiilijalanjäljen arviointiin kuuluvien raja-arvojen ylittämiselle |
 | osatekijä                      |      | SuureenArvo           | 0..\*           |                                                                       |
 
@@ -971,7 +968,7 @@ Ilmastoselvitykseen kuuluvat rakentamistoimenpidettä koskevat arvioidut hiilik�
 **Ominaisuudet**
 
 | Nimi                           | Name | Tyyppi                | Kardinaliteetti | Kuvaus                                                                       |
-|---------------|---------------|---------------|---------------|---------------|
+|-----------|-----------|-----------|-----------|----------------------------|
 | rajaArvostaPoikkeamisenPeruste |      | [PoikkeamisenPeruste] | 0..\*           | Syy hiilikädenjäljen arvioinnille määriteltävien raja-arvojen ylittämiselle. |
 | osatekijä                      |      | SuureenArvo           | 0..\*           |                                                                              |
 
@@ -986,7 +983,7 @@ Ilmastoselvityksen hiilijalan- ja kädenjälkitiedot yhtä rakennuskohdetta kosk
 **Ominaisuudet**
 
 | Nimi                  | Name             | Tyyppi                                                           | Kardinaliteetti | Kuvaus                                                                                           |
-|---------------|---------------|---------------|---------------|---------------|
+|-----------|-----------|---------------|-----------|------------------------|
 | käyttötarkoitusluokka |                  | [RakennuksenKäyttötarkoitusluokkaEnergiatehokkuudenArvioinnissa] | 1               | Rakennuskohteen tai sen sen osan energiatehokkuden arviointiin käytettävä käyttötarkoitus        |
 | hiilijalanjälki       | carbon footprint | [Hiilikädenjälkitiedot]                                          | 1               | Ilmastoselvityksen hiilijalanjälkitiedot                                                         |
 | hiilikädenjälki       | carbon handprint | [Hiilikädenjälkitiedot]                                          | 1               | Ilmastoselvityksen hiilikädenjälkitiedot                                                         |
@@ -995,12 +992,12 @@ Ilmastoselvityksen hiilijalan- ja kädenjälkitiedot yhtä rakennuskohdetta kosk
 **Assosiaatio**
 
 | Roolinimi | Rolename | Kohde               | Kardinaliteetti | Kuvaus                                      |
-|---------------|---------------|---------------|---------------|---------------|
+|------------|------------|------------|------------|------------------------|
 | kohde     |          | [RakennusTaiSenOsa] | 1               | Rakennuskohde, jota annetut tiedot koskevat |
 
 ### RakennuspaikkakohtaisetVähähiilisyystiedot
 
-Englanninkielinen nimi: **käännös tähän**
+Englanninkielinen nimi:
 
 Kuvaa käsitteen [RakennuskohdekohtaisetVähähiilisyystiedot](../../kasitemalli/#rakennuskohdekohtaisetvahahiilisyystiedot), Stereotyyppi: DataType (tietotyyppi)
 
@@ -1009,19 +1006,19 @@ Ilmastoselvityksen hiilijalan- ja kädenjälkitiedot rakennuspaikkaan kohdistuvi
 **Ominaisuudet**
 
 | Nimi            | Name             | Tyyppi                  | Kardinaliteetti | Kuvaus                                   |
-|---------------|---------------|---------------|---------------|---------------|
+|-------------|-------------|-------------|-------------|--------------------|
 | hiilijalanjälki | carbon footprint | [Hiilijalanjälkitiedot] | 1               | Ilmastoselvityksen hiilijalanjälkitiedot |
 | hiilikädenjälki | carbon handprint | [Hiilikädenjälkitiedot] | 1               | Ilmastoselvityksen hiilikädenjälkitiedot |
 
 **Assosiaatiot**
 
 | Roolinimi | Rolename      | Kohde                             | Kardinaliteetti | Kuvaus                               |
-|---------------|---------------|---------------|---------------|---------------|
+|-------------|-------------|----------------|-------------|------------------|
 | paikka    | building site | [Rakennuspaikka](#rakennuspaikka) | 1               | Rakennuspaikka, jota tiedot koskevat |
 
 ### PoikkeamisenPeruste
 
-Englanninkielinen nimi: **käännös tähän**
+Englanninkielinen nimi:
 
 Kuvaa käsitteen [PoikkeamisenPeruste](../../kasitemalli/#poikkeamisenperuste), Stereotyyppi: DataType (tietotyyppi)
 
@@ -1030,24 +1027,24 @@ Selite, joka kuvaa annetuista raja-arvoista poikkevien arvojen syytä.
 **Ominaisuudet**
 
 | Nimi        | Name | Tyyppi                                                    | Kardinaliteetti | Kuvaus                                         |
-|---------------|---------------|---------------|---------------|---------------|
+|-----------|-----------|----------------------|-----------|-----------------|
 | perustelaji |      | [IlmastoselvityksenRajaArvoistapoikkeamisenPerusteenLaji] | 0..\*           | Luokitteluun perustuva syykoodi poikkeamiselle |
-| selite      |      | [Measure](#measure)                                       | 0..\*           | Sanallinen selite poikkeamiselle               |
+| selite      |      | [LanguageString]                                          | 0..\*           | Sanallinen selite poikkeamiselle               |
 
 ## Materiaaliseloste
 
 ### Materiaaliseloste
 
-Englanninkielinen nimi: **käännös tähän**
+Englanninkielinen nimi:
 
-Kuvaa käsitteen [Materiaaliseloste](../../kasitemalli/#materiaaliseloste), Stereotyyppi: FeatureType (kohdetyyppi)
+Kuvaa käsitteen [Materiaaliseloste](../../kasitemalli/#materiaaliseloste), erikoistaa luokkaa [VersioituObjekti](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#versioituobjekti), Stereotyyppi: FeatureType (kohdetyyppi)
 
 Selvitys, jossa raportoidaan rakentamistoimenpitessä käytettyjen materiaalien määrät rakennusosittain, materiaalilajeittain ja niiden alkuperän perusteella
 
 **Ominaisuudet**
 
 | Nimi                               | Name        | Tyyppi                                                           | Kardinaliteetti | Kuvaus                                                                                                                                                     |
-|---------------|---------------|---------------|---------------|---------------|
+|-----------|-----------|-----------|-----------|------------------------------|
 | otsikko                            | title       | [LanguageString](#languagestring)                                | 0..\*           | Selvityksen otsikko                                                                                                                                        |
 | kuvaus                             | description | [LanguageString](#languagestring)                                | 0..\*           | Kohteen sisällöstä kertova tieto                                                                                                                           |
 | laatimispäivä                      |             | Date                                                             | 1               | selvityksen laatimispäivämäärä                                                                                                                             |
@@ -1056,19 +1053,19 @@ Selvitys, jossa raportoidaan rakentamistoimenpitessä käytettyjen materiaalien 
 | rakennuksenOsienMateriaalit        |             | [RakennuspaikkakohtaisetMateriaalimäärät]                        | 1..\*           | Rakennuksen materiaalimäärät rakennusosittain                                                                                                              |
 | rakennuspaikanMateriaalit          |             | [RakennuspaikkakohtaisetMateriaalimäärät]                        | 1               | Rakennuspaikkaan kohdistuvien rakentamisen materiaalien määrät rakennusosittain                                                                            |
 | materiaalilajinMäärä               |             | SuureenArvo                                                      | 0..\*           | Käytetyn materiaalinmäärä yhden materiaalilajin osalta                                                                                                     |
-| vaarallistenAineidenMäärä          |             | [Measure](#measure)                                              |                 | Käytettävien tai käytettyjen vaarallisten aineiden kokonaismäärä niiden painon perusteella, pyöristettynä kokonaisiin kilogrammoihin.                      |
-| uusiutuvanMateriaalinMäärä         |             | [Measure](#measure)                                              |                 | Käytettävien tai käytettyjen uusiutuvien materiaalien kokonaismäärä niiden painon perusteella, pyöristettynä kokonaisiin kilogrammoihin.                   |
-| uusiutumattomanMateriaalinMäärä    |             | [Measure](#measure)                                              |                 | Käytettävien tai käytettyjen uusiutumattoman materiaalin kokonaismäärä niiden painon perusteella, pyöristettynä kokonaisiin kilogrammoihin.                |
-| kierrätetynMateriaalinMäärä        |             | [Measure](#measure)                                              |                 | Käytettävien tai käytettyjen kierrätetyn materiaalin kokonaismäärä niiden painon perusteella, pyöristettynä kokonaisiin kilogrammoihin.                    |
-| uudelleenkäytetynMateriaalinMäärä  |             | [Measure](#measure)                                              |                 | Käytettävien tai käytettyjen uudelleenkäytetyn materiaalin kokonaismäärä niiden painon perusteella, pyöristettynä kokonaisiin kilogrammoihin.              |
+| vaarallistenAineidenMäärä          |             | [Measure](#measure)                                              | 1               | Käytettävien tai käytettyjen vaarallisten aineiden kokonaismäärä niiden painon perusteella, pyöristettynä kokonaisiin kilogrammoihin.                      |
+| uusiutuvanMateriaalinMäärä         |             | [Measure](#measure)                                              | 1               | Käytettävien tai käytettyjen uusiutuvien materiaalien kokonaismäärä niiden painon perusteella, pyöristettynä kokonaisiin kilogrammoihin.                   |
+| uusiutumattomanMateriaalinMäärä    |             | [Measure](#measure)                                              | 1               | Käytettävien tai käytettyjen uusiutumattoman materiaalin kokonaismäärä niiden painon perusteella, pyöristettynä kokonaisiin kilogrammoihin.                |
+| kierrätetynMateriaalinMäärä        |             | [Measure](#measure)                                              | 1               | Käytettävien tai käytettyjen kierrätetyn materiaalin kokonaismäärä niiden painon perusteella, pyöristettynä kokonaisiin kilogrammoihin.                    |
+| uudelleenkäytetynMateriaalinMäärä  |             | [Measure](#measure)                                              | 1               | Käytettävien tai käytettyjen uudelleenkäytetyn materiaalin kokonaismäärä niiden painon perusteella, pyöristettynä kokonaisiin kilogrammoihin.              |
 
 **Assosiaatiot**
 
-| Roolinimi  | Rolename | Kohde                                                                                                                      | Kardinaliteetti | Kuvaus                                                                    |
-|---------------|---------------|---------------|---------------|---------------|
-| toimenpide | action   | [RakennusKohteenToimenpide](#rakennuskohteentoimenpide)                                                                    | 1               | Toimenpide, jonka ilmastovaikutuksia ilmastoselvitys koskee               |
-| kohde      |          | [RakennusTaiSenOsa]                                                                                                        | 1..\*           | Rakennuskohde, jonka rakentamista tai korjaamista ilmastoselvitys koskee. |
-| laatija    | author   | [SuunnitelmanLaatija](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#suunnitelmanlaatija)  | 1..\*           | laatija/laadinnan määritelmä                                              |
+| Roolinimi  | Rolename | Kohde                                                                                                                     | Kardinaliteetti | Kuvaus                                                                    |
+|----------|----------|----------------------------|----------|---------------|
+| toimenpide | action   | [RakennusKohteenToimenpide](#rakennuskohteentoimenpide)                                                                   | 1               | Toimenpide, jonka ilmastovaikutuksia ilmastoselvitys koskee               |
+| kohde      |          | [RakennusTaiSenOsa]                                                                                                       | 1..\*           | Rakennuskohde, jonka rakentamista tai korjaamista ilmastoselvitys koskee. |
+| laatija    | author   | [SuunnitelmanLaatija](https://tietomallit.ymparisto.fi/ry-yhteiset/v1.0/looginenmalli/dokumentaatio/#suunnitelmanlaatija) | 1..\*           | laatija/laadinnan määritelmä                                              |
 
 ### RakennuspaikkakohtaisetMateriaalimäärät
 
@@ -1081,14 +1078,14 @@ Rakennuspaikkaan kohdistuvat rakentamistoimenpiteen materiaalimäärät rakennus
 **Ominaisuudet**
 
 | Nimi              | Name | Tyyppi      | Kardinaliteetti | Kuvaus                                                |
-|---------------|---------------|---------------|---------------|---------------|
+|-----------|-----------|-----------|-----------|----------------------------|
 | rakennusosanOsuus |      | SuureenArvo | 0..\*           | Yhden rakennusosan osuus materiaalin kokonaismäärästä |
 
 **Assosiaatiot**
 
-| Roolinimi | Rolename | Kohde                             | Kardinaliteetti | Kuvaus                                       |
-|---------------|---------------|---------------|---------------|---------------|
-| paikka    |          | [Rakennuspaikka](#rakennuspaikka) | 1               | Rakennuspaikka, jota annetut tiedot koskevat |
+| Roolinimi | Rolename      | Kohde                             | Kardinaliteetti | Kuvaus                                       |
+|------------|------------|---------------|------------|---------------------|
+| paikka    | building site | [Rakennuspaikka](#rakennuspaikka) | 1               | Rakennuspaikka, jota annetut tiedot koskevat |
 
 ### RakennuskohdekohtaisetMateriaalimäärät
 
@@ -1099,13 +1096,13 @@ Kuvaa käsitteen [RakennuskohdekohtaisetMateriaalimäärät](../../kasitemalli/#
 **Ominaisuudet**
 
 | Nimi              | Name | Tyyppi      | Kardinaliteetti | Kuvaus                                                |
-|---------------|---------------|---------------|---------------|---------------|
+|-----------|-----------|-----------|-----------|----------------------------|
 | rakennusosanOsuus |      | SuureenArvo | 0..\*           | Yhden rakennusosan osuus materiaalin kokonaismäärästä |
 
 : **Assosiaatiot**
 
 | Roolinimi | Rolename | Kohde               | Kardinaliteetti | Kuvaus                                      |
-|---------------|---------------|---------------|---------------|---------------|
+|------------|------------|------------|------------|------------------------|
 | kohde     |          | [RakennusTaiSenOsa] | 1               | Rakennuskohde, jota annetut tiedot koskevat |
 
 ## Koodistot
